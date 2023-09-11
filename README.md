@@ -6,6 +6,6 @@ _Laravel Boilerplate_ simplifies the development with templates.
 
 ## Features
 
-[ ] Socialite Integration
-[ ] AWS S3 support
-[ ] Gravatar support
+- [ ] Socialite Integration
+- [ ] AWS S3 support
+- [ ] Gravatar support
