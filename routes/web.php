@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +16,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::group(['prefix' => 'auth', 'as' => 'auth.'], function () {
+    Route::group(['prefix' => 'google', 'as' => 'google.'], function () {
+        Route::get('/redirect', [AuthController::class, 'googleRedirect'])->name('redirect');
+        Route::get('/callback', [AuthController::class, 'googleCallback'])->name('callback');
+    });
 });

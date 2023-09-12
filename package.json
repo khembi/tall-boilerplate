@@ -3,7 +3,16 @@
     "type": "module",
     "scripts": {
         "dev": "vite",
-        "build": "vite build"
+        "build": "vite build",
+        "reset": "./vendor/bin/sail build --no-cache",
+        "project-setup": "bash project-setup.sh",
+        "up": "./vendor/bin/sail up",
+        "down": "./vendor/bin/sail down",
+        "destroy": "./vendor/bin/sail down -v",
+        "shell": "./vendor/bin/sail shell",
+        "tinker": "./vendor/bin/sail tinker",
+        "test": "./vendor/bin/sail test",
+        "pint-fix": "./vendor/bin/pint -v"
     },
     "devDependencies": {
         "axios": "^1.1.2",
