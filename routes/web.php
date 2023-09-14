@@ -28,11 +28,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::group(['prefix' => 'auth', 'as' => 'auth.'], function () {
-    Route::group(['prefix' => 'google', 'as' => 'google.'], function () {
-        Route::get('/redirect', [AuthController::class, 'googleRedirect'])->name('redirect');
-        Route::get('/callback', [AuthController::class, 'googleCallback'])->name('callback');
-    });
-});
-
 require __DIR__.'/auth.php';

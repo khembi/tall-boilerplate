@@ -43,5 +43,11 @@
                 {{ __('Log in') }}
             </x-primary-button>
         </div>
+
+        <div class="flex items-center mt-4">
+            <x-primary-link href="{{ route('auth.google.redirect') }}" class="block">
+                {{ __('Continue with Google') }}
+            </x-primary-link>
+        </div>
     </form>
 </x-guest-layout>
