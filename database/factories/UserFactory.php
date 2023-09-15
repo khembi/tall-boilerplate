@@ -35,4 +35,10 @@ class UserFactory extends Factory
             'email_verified_at' => null,
         ]);
     }
+
+    public function avatar() : static {
+        return $this->state(fn (array $attributes) => [
+            'profile_picture_url' => isset($attributes['email']) ? 'https://avatar.vercel.sh/' . $attributes['email'] : 'https://avatar.vercel.sh/avatar',
+        ]);
+    }
 }

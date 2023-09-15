@@ -9,5 +9,5 @@ _Laravel Boilerplate_ simplifies the development with templates.
 - [x] TALL Setup
 - [x] Breeze Integration
 - [x] Socialite Integration
-- [ ] Gravatar support
+- [ ] Avatar support
 - [ ] AWS S3 support
