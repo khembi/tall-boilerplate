@@ -12,7 +12,8 @@
         "shell": "./vendor/bin/sail shell",
         "tinker": "./vendor/bin/sail tinker",
         "test": "./vendor/bin/sail test",
-        "pint-fix": "./vendor/bin/pint -v"
+        "pint-fix": "./vendor/bin/pint -v",
+        "pint-test": "./vendor/bin/pint --test"
     },
     "devDependencies": {
         "@tailwindcss/forms": "^0.5.2",

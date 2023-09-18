@@ -11,13 +11,8 @@ use Laravel\Socialite\Facades\Socialite;
 
 class SocialiteController extends Controller
 {
-    /**
-     * @param Request $request
-     * 
-     * @return RedirectResponse
-     */
-    public function googleRedirect(Request $request) : RedirectResponse
-    {    
+    public function googleRedirect(Request $request): RedirectResponse
+    {
         return Socialite::driver('google')->redirect();
     }
 
@@ -25,7 +20,7 @@ class SocialiteController extends Controller
     {
         $driver = Socialite::driver('google');
         $google_user = $driver->user();
- 
+
         $user = User::updateOrCreate([
             'google_id' => $google_user->id,
             'email' => $google_user->email,
@@ -35,9 +30,9 @@ class SocialiteController extends Controller
             'google_refresh_token' => $google_user->refreshToken,
             'profile_picture_url' => $google_user->picture,
         ]);
-    
+
         Auth::login($user);
-    
+
         return redirect('/dashboard');
     }
 }

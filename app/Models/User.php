@@ -24,7 +24,7 @@ class User extends Authenticatable
         'google_id',
         'google_token',
         'google_refresh_token',
-        'profile_picture_url'
+        'profile_picture_url',
     ];
 
     /**
