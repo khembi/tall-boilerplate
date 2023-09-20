@@ -16,23 +16,38 @@ class SocialiteController extends Controller
         return Socialite::driver('google')->redirect();
     }
 
-    public function googleCallback(Request $request)
+    public function googleCallback(Request $request): RedirectResponse
     {
         $driver = Socialite::driver('google');
         $google_user = $driver->user();
-
-        $user = User::updateOrCreate([
+        $user = User::firstOrNew([
             'google_id' => $google_user->id,
             'email' => $google_user->email,
-        ], [
-            'name' => $google_user->name,
-            'google_token' => $google_user->token,
-            'google_refresh_token' => $google_user->refreshToken,
-            'profile_picture_url' => $google_user->picture,
         ]);
 
-        Auth::login($user);
+        // TODO: Improve code quality
+        if (empty($user->name)) {
+            $user->name = $google_user->name;
+        }
 
-        return redirect('/dashboard');
+        // TODO: Improve code quality
+        if (empty($user->google_token)) {
+            $user->google_token = $google_user->token;
+        }
+
+        // TODO: Improve code quality
+        if (empty($user->google_refresh_token)) {
+            $user->google_refresh_token = $google_user->refreshToken;
+        }
+
+        // TODO: Improve code quality
+        if (empty($user->profile_picture_url)) {
+            $user->profile_picture_url = $google_user->avatar;
+        }
+
+        if ($user->save()) {
+            Auth::login($user);
+            return redirect('/dashboard');
+        }
     }
 }
