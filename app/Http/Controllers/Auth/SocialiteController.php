@@ -26,22 +26,22 @@ class SocialiteController extends Controller
         ]);
 
         // TODO: Improve code quality
-        if (empty($user->name)) {
+        if (empty($user->name) && isset($google_user->name)) {
             $user->name = $google_user->name;
         }
 
         // TODO: Improve code quality
-        if (empty($user->google_token)) {
+        if (empty($user->google_token) && isset($google_user->token)) {
             $user->google_token = $google_user->token;
         }
 
         // TODO: Improve code quality
-        if (empty($user->google_refresh_token)) {
+        if (empty($user->google_refresh_token) && isset($google_user->refreshToken)) {
             $user->google_refresh_token = $google_user->refreshToken;
         }
 
         // TODO: Improve code quality
-        if (empty($user->profile_picture_url)) {
+        if (empty($user->profile_picture_url) && isset($google_user->avatar)) {
             $user->profile_picture_url = $google_user->avatar;
         }
 
