@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Auth;
 
+use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -44,5 +45,11 @@ class RegistrationTest extends TestCase
         ]);
 
         Event::assertDispatched(Registered::class);
+
+        // $user = User::where([
+        //     'email' => 'test@example.com',
+        // ])->first();
+
+        // $this->assertTrue('https://avatar.vercel.sh/test@example.com' == $user->profile_picture_url);
     }
 }
